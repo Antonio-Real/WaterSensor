@@ -69,15 +69,15 @@ void setupOTA()
                  {
                      ESP_LOGD(TAG, "Error[%u]: ", error);
                      if (error == OTA_AUTH_ERROR)
-                         Serial.println("Auth Failed");
+                         log_i("Auth Failed");
                      else if (error == OTA_BEGIN_ERROR)
-                         Serial.println("Begin Failed");
+                         log_i("Begin Failed");
                      else if (error == OTA_CONNECT_ERROR)
-                         Serial.println("Connect Failed");
+                         log_i("Connect Failed");
                      else if (error == OTA_RECEIVE_ERROR)
-                         Serial.println("Receive Failed");
+                         log_i("Receive Failed");
                      else if (error == OTA_END_ERROR)
-                         Serial.println("End Failed");
+                         log_i("End Failed");
                  });
 
     ArduinoOTA.begin();
@@ -122,10 +122,14 @@ void setupESPNOW()
 
 void setup()
 {
+
+    #ifdef CORE_DEBUG_LEVEL
     Serial.begin(115200);
+    #endif
+
     lcd.begin(16,2);
     
-    // Test OLED
+    // Test LCD
     displayString("LCD INIT");
     delay(1000);
 
@@ -149,7 +153,7 @@ void loop()
         if(newData) {
             int percentage = (waterTankHeight / myData.dist) * 100;
             
-            Serial.println(myData.dist);
+            log_i("%.2f\n", myData.dist);
             displayString(String(int(myData.dist)));
             displayString(String(percentage) + "%");
 
