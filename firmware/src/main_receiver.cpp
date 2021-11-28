@@ -151,11 +151,12 @@ void loop()
             ESP.restart();
 
         if(newData) {
-            int percentage = (waterTankHeight / myData.dist) * 100;
+            int percentage = (myData.dist / waterTankHeight) * 100;
+            percentage = constrain(percentage, 0, 100);
             
             log_i("%.2f\n", myData.dist);
             displayString(String(int(myData.dist)));
-            displayString(String(percentage) + "%");
+            displayString(String(percentage) + "%", 1);
 
             newData = false;
         }

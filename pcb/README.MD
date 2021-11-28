@@ -17,5 +17,5 @@ The PCB was designed using **Kicad 5.99** nightly build (soon to be released as 
 ![pcb_render](outputs/pcb_render.png)
 
 ## **Manufactured PCB**
-The PCB was manufactured in a PCB milling machine and unfortunately came out poorly and required some enameled wire to replace the tracks.
+The PCB was manufactured in a PCB milling machine and unfortunately came out poorly and required some enameled wire to replace the damaged tracks.
 ![pcb_manuf](outputs/sensor_board.jpg)
